@@ -1,3 +1,4 @@
+import { ContestRex } from "../config";
 import { GetLocalTime } from "../utils";
 import { GetAtcoderContest } from "./atcoder";
 import { GetCodeforcesContest } from "./codeforces";
@@ -36,7 +37,7 @@ export async function GetDiv2Contests(): Promise<Array<Contest>> {
     let recentContests = await GetRecentContests();
     let div2Contests: Array<Contest> = [];
     for (const contest of recentContests) {
-        if (contest.name.match("Div. 2|Regular|Beginner")) {
+        if (contest.name.match(ContestRex)) {
             div2Contests.push(contest);
         }
     }

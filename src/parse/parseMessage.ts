@@ -1,9 +1,7 @@
-import {NodifyContest } from "..";
+import { NodifyContest } from "..";
 import { MessageType, SendMessage } from "../api/sendMessage";
-import { GetAtcoderContest } from "../contest/atcoder";
-import { GetCodeforcesContest } from "../contest/codeforces";
-import { GetDiv2Contests, GetRecentContests } from "../contest/Contest";
-import { GetLocalTime } from "../utils";
+import { GetDiv2Contests } from "../contest/Contest";
+import { SendRankList } from "../contest/ranklist";
 
 export async function ParseMessage(data: any) {
     if (data["raw_message"] == ".contest") {
@@ -28,5 +26,7 @@ export async function ParseMessage(data: any) {
         SendMessage(messageType, qq, message);
     } else if (data["raw_message"] == ".test") {
         NodifyContest();
+    } else if (data["raw_message"] == "来个榜") {
+        SendRankList(data);
     }
 }

@@ -1,10 +1,11 @@
 import { scheduleJob } from 'node-schedule';
 import WebSocket from 'ws';
 import { MessageType, SendMessage } from './api/sendMessage';
+import { NodifyGroups, Port } from './config';
 import { Contest, GetDiv2Contests } from './contest/Contest';
 import { ParseEvent } from './parse/parse';
 
-export const ws = new WebSocket('ws://localhost:57943/');
+export const ws = new WebSocket('ws://localhost:' + Port + '/');
 
 ws.on('message', function message(data) {
     console.log("received:" + data);
@@ -26,10 +27,12 @@ export function NodifyContest() {
             for (const contest of nodifyContests) {
                 message += contest.toString();
             }
-            SendMessage(MessageType.GROUP, 773682417, message);
+            for (const qq of NodifyGroups)
+                SendMessage(MessageType.GROUP, qq, message);
         } else {
             let message = "今日无比赛：）";
-            SendMessage(MessageType.GROUP, 773682417, message);
+            for (const qq of NodifyGroups)
+                SendMessage(MessageType.GROUP, qq, message);
         }
     })
 }
