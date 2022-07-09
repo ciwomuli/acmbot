@@ -1,3 +1,5 @@
 export function GetLocalTime(n: number) {
-    return new Date(n).toLocaleString().replace(/:\d{1,2}$/, ' ');
+    let date = new Date(n);
+    let timeMessage = (date.getMonth() + 1) + "月" + date.getDate() + "日 " + date.getHours() + ":" + date.getMinutes();
+    return timeMessage;
 }  
