@@ -16,7 +16,7 @@ export async function ParseMessage(data: any) {
         SendMessageBack(data, message);
     } else if (data["raw_message"] == ".test") {
         NodifyContest();
-    } else if (data["raw_message"] == "来个榜") {
+    } else if (data["raw_message"].match("来个外?榜")) {
         SendRankList(data);
     }
 }
