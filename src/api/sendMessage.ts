@@ -16,3 +16,16 @@ export function SendMessage(type: MessageType, qq: number, message: string) {
     ws.send(JSON.stringify(data));
     console.log("send:" + JSON.stringify(data));
 }
+export function SendMessageBack(data: any, message: string) {
+    let messageType: MessageType;
+    let qq: number;
+    if (data["message_type"] == "private") {
+        messageType = MessageType.PRIVATE;
+        qq = data["user_id"];
+    }
+    else {
+        messageType = MessageType.GROUP;
+        qq = data["group_id"];
+    }
+    SendMessage(messageType, qq, message);
+}
