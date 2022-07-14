@@ -7,3 +7,6 @@ export function GetData() {
     data = readJSONSync('data.json');
     return data;
 }
+export function UpdateData(){
+    data = readJSONSync('data.json');
+}
