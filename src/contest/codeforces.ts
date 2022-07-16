@@ -1,4 +1,5 @@
 import needle from "needle";
+import { ChcheTime } from "../config";
 import { Contest } from "./Contest";
 let recentContests: Array<Contest>;
 let lastGetTime: number = 0;
