@@ -6,7 +6,7 @@ let finished: Boolean;
 let lastGetTime: number = 0;
 export async function GetAtcoderContest(): Promise<Array<Contest>> {
     let nowTime = Date.now() / 1000;
-    if (nowTime - lastGetTime > 1800) {
+    if (nowTime - lastGetTime > ChcheTime) {
         try {
             recentContests = [];
             console.log("Begin to get atcoder contest.");

@@ -6,7 +6,7 @@ export async function GetCodeforcesContest(): Promise<Contest[]> {
     let nowTime = Date.now() / 1000;
     // console.log(nowTime);
     //console.log(lastGetTime);
-    if (nowTime - lastGetTime > 1800) {
+    if (nowTime - lastGetTime > ChcheTime) {
         try {
             recentContests = [];
             console.log("Begin to get codeforces contest.");
